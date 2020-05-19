@@ -1,0 +1,15 @@
+apiVersion: skaffold/v2beta3
+kind: Config
+metadata:
+  name: kuard
+build:
+  artifacts:
+    - image: docker.pkg.github.com/williamb17/kuard/kuard
+  tagPolicy:
+    dateTime:
+      format: 2006-01-02_15-04-05.999_MST
+      timezone: UTC
+deploy:
+  kubectl:
+    manifests:
+      - k8s/k8s-dep.yaml
